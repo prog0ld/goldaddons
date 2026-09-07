@@ -18,6 +18,12 @@ repositories {
 			includeGroup("maven.modrinth")
 		}
 	}
+
+	flatDir {
+		dirs("libs")
+	}
+	maven("https://maven.starred.foo/releases")
+	maven("https://maven.starred.foo/snapshots")
 }
 
 dependencies {
@@ -25,6 +31,9 @@ dependencies {
 	implementation("net.fabricmc:fabric-loader:${providers.gradleProperty("loader_version").get()}")
 	implementation("net.fabricmc.fabric-api:fabric-api:${providers.gradleProperty("fabric_api_version").get()}")
 	implementation("net.fabricmc:fabric-language-kotlin:${providers.gradleProperty("fabric_kotlin_version").get()}")
+
+	// Athen dependency - includes the JAR from libs directory
+	implementation(files("libs/athen.jar"))
 
 	implementation("maven.modrinth:avbpWn0t:R4TvAZLp")
 }
