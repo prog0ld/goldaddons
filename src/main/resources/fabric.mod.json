@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "goldaddons",
+	"version": "${version}",
+	"name": "GoldAddons",
+	"description": "Qol mod hooked to athen developed by progold",
+	"authors": [
+		"progold1324"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/goldaddons/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			{
+				"value": "dev.goldaddons.GoldAddons",
+				"adapter": "kotlin"
+			}
+		],
+		"client": [
+			{
+				"value": "dev.goldaddons.GoldAddonsClient",
+				"adapter": "kotlin"
+			}
+		]
+	},
+	"mixins": [
+		"goldaddons.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~26.1.2",
+		"java": ">=25",
+		"fabric-api": "*",
+		"fabric-language-kotlin": "*"
+	}
+}
