@@ -23,7 +23,7 @@ repositories {
 		dirs("libs")
 	}
 	
-	// Try maven repositories first
+	// Athen maven repositories
 	maven("https://maven.starred.foo/releases")
 	maven("https://maven.starred.foo/snapshots")
 	mavenCentral()
@@ -35,13 +35,8 @@ dependencies {
 	implementation("net.fabricmc.fabric-api:fabric-api:${providers.gradleProperty("fabric_api_version").get()}")
 	implementation("net.fabricmc:fabric-language-kotlin:${providers.gradleProperty("fabric_kotlin_version").get()}")
 
-	// Try to get Athen from maven first, fall back to local JAR if not found
-	try {
-		implementation("foo.starred:athen:0.3.2b")
-	} catch (e: Exception) {
-		// If maven fails, use local JAR
-		implementation(files("libs/athen.jar"))
-	}
+	// Athen - try maven, fall back to local JAR
+	implementation("foo.starred:athen:0.3.2b")
 
 	implementation("maven.modrinth:avbpWn0t:R4TvAZLp")
 }
