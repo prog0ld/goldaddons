@@ -23,9 +23,6 @@ repositories {
 		dirs("libs")
 	}
 	
-	// Athen maven repositories
-	maven("https://maven.starred.foo/releases")
-	maven("https://maven.starred.foo/snapshots")
 	mavenCentral()
 }
 
@@ -35,8 +32,9 @@ dependencies {
 	implementation("net.fabricmc.fabric-api:fabric-api:${providers.gradleProperty("fabric_api_version").get()}")
 	implementation("net.fabricmc:fabric-language-kotlin:${providers.gradleProperty("fabric_kotlin_version").get()}")
 
-	// Athen - try maven, fall back to local JAR
-	implementation("foo.starred:athen:0.3.2b")
+	// Athen - using local JAR from libs directory
+	val mcVersion = providers.gradleProperty("minecraft_version").get()
+	implementation(files("libs/athen-0.3.2b+$mcVersion.jar"))
 
 	implementation("maven.modrinth:avbpWn0t:R4TvAZLp")
 }
