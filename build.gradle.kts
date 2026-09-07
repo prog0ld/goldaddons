@@ -33,8 +33,10 @@ dependencies {
 	implementation("net.fabricmc:fabric-language-kotlin:${providers.gradleProperty("fabric_kotlin_version").get()}")
 
 	// Athen - using local JAR from libs directory
+	// Extract major.minor version (e.g., 26.1.2 -> 26.1)
 	val mcVersion = providers.gradleProperty("minecraft_version").get()
-	implementation(files("libs/athen-0.3.2b+$mcVersion.jar"))
+	val mcVersionShort = mcVersion.substringBeforeLast(".")
+	implementation(files("libs/athen-0.3.2b+$mcVersionShort.jar"))
 
 	implementation("maven.modrinth:avbpWn0t:R4TvAZLp")
 }
